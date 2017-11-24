@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jd.seed.dictionary.city.repository.CityRepository">
+	<sql id="allFields">
+		id,zh_name,en_name,unity_code,zh_full_pin,zh_short_pin,priority,state,create_time,update_time
+	</sql>
+	
+	<insert id="insert" parameterType="City" useGeneratedKeys="true" keyProperty="id">
+		insert into dict_city(zh_name,en_name,unity_code,zh_full_pin,zh_short_pin,priority,state)
+		values(#{zhName},#{enName},#{unityCode},#{zhFullPin},#{zhShortPin},#{priority},#{state})
+	</insert>
+	<update id="update" parameterType="City">
+		update
+			dict_city
+		set
+			zh_name = #{zhName},
+			en_name = #{enName},
+			zh_full_pin = #{zhFullPin},
+			zh_short_pin = #{zhShortPin},
+			priority = #{priority},
+			state = #{state}			
+		where
+			id = #{id}
+	</update>
+	
+	<delete id="delete" parameterType="City">
+		delete from dict_city where id = #{id}
+	</delete>
+	<select id="selectById" parameterType="java.lang.Long" resultType="City">
+		select
+			<include refid="allFields"/>
+		from
+			dict_city 
+		where 
+			id = #{id}
+	</select>
+	<select id="selectByUnityCode" parameterType="java.lang.String" resultType="City">
+		select
+			<include refid="allFields"/>
+		from
+			dict_city 
+		where 
+			unity_code = #{unityCode}
+	</select>
+	<select id="selectAll" resultType="City">
+		select
+			<include refid="allFields"/>
+		from 
+			dict_city
+	</select>
+	
+</mapper>
