@@ -1,8 +1,8 @@
 package com.jd.seed.exercise.algorithm.sort.bubble;
 
-import java.util.Random;
-
 import org.junit.Test;
+
+import com.jd.seed.exercise.algorithm.sort.SortTemplate;
 
 /**
  * <pre>
@@ -12,25 +12,16 @@ import org.junit.Test;
  * 
  * @author mecarlen 2017年2月25日 下午4:19:50
  */
-public class JunitBubbleSort {
+public class JunitBubbleSort extends SortTemplate {
+	
 	@Test
-	public void sort() {
-		// 随机准备数据
-		Random rd = new Random();
-		int numCount = 20;
-		int[] nums = new int[numCount];
+	@Override
+	public void execute() {
+		super.execute();
+	}
 
-		System.out.print("初始：");
-		for (int index = 0; index < numCount; index++) {
-			nums[index] = rd.nextInt(100);
-			if (index == 0)
-				System.out.print("[" + nums[index]);
-			else if (index == (numCount - 1))
-				System.out.print("," + nums[index] + "]");
-			else
-				System.out.print("," + nums[index]);
-		}
-		System.out.println();
+	@Override
+	public void sort() {
 		// 排序
 		for (int firstlevel = 0; firstlevel < numCount - 1; ++firstlevel) {
 			System.out.print("第" + (firstlevel + 1) + "轮：");
@@ -53,17 +44,6 @@ public class JunitBubbleSort {
 			}
 			System.out.print("->" + nums[firstlevel]);
 			System.out.println();
-		}
-
-		System.out.print("结束：");
-		for (int index = 0; index < numCount; index++) {
-			// nums[index]=rd.nextInt(100);
-			if (index == 0)
-				System.out.print("[" + nums[index]);
-			else if (index == (numCount - 1))
-				System.out.print("," + nums[index] + "]");
-			else
-				System.out.print("," + nums[index]);
 		}
 	}
 }
