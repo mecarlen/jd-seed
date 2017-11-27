@@ -26,7 +26,7 @@ public class JunitStraightInsertionSort extends SortTemplate {
 				int secondlevel = firstlevel - 1;
 				int tmp = nums[firstlevel];
 				nums[firstlevel] = nums[firstlevel - 1];
-				while (tmp < nums[secondlevel]) {
+				while (secondlevel < nums[secondlevel]) {
 					nums[secondlevel + 1] = nums[secondlevel];
 					secondlevel--;
 				}
