@@ -109,6 +109,11 @@
 				<version>3.4.4</version>
 			</dependency>
 			<dependency>
+				<groupId>com.squareup.okhttp3</groupId>
+				<artifactId>okhttp</artifactId>
+				<version>3.8.1</version>
+			</dependency>
+			<dependency>
 				<groupId>com.alibaba</groupId>
 				<artifactId>fastjson</artifactId>
 				<version>1.2.38</version>
@@ -133,5 +138,6 @@
 		<module>jd-seed-base</module>
 		<module>jd-seed-util</module>
 		<module>jd-seed-base-elasticsearch</module>
+		<module>jd-seed-exercise</module>
 	</modules>
 </project>

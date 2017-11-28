@@ -2,8 +2,6 @@ package com.jd.seed.dictionary.city.domain;
 
 import java.util.Date;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import com.jd.seed.base.domain.EnumEntityState;
 import com.jd.seed.base.domain.ValueObject;
 import com.jd.seed.dictionary.Dictionary;
@@ -34,7 +32,6 @@ public class CityVO implements City, Dictionary, ValueObject<Long, CityEntity> {
 	// 状态
 	private EnumEntityState state;
 	// 创建时间
-	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date createTime;
 	// 更新时间
 	private Date updateTime;

@@ -14,10 +14,14 @@
 			<groupId>com.jd.seed</groupId>
 			<artifactId>jd-seed-base</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>joda-time</groupId>
-			<artifactId>joda-time</artifactId>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>joda-time</groupId> -->
+<!-- 			<artifactId>joda-time</artifactId> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.alibaba</groupId> -->
+<!-- 			<artifactId>fastjson</artifactId> -->
+<!-- 		</dependency> -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>

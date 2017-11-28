@@ -15,6 +15,7 @@ import com.jd.seed.dictionary.city.service.CityService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import springfox.documentation.annotations.ApiIgnore;
 
 /**
  * <pre>
@@ -24,6 +25,7 @@ import io.swagger.annotations.ApiParam;
  * 
  * @author mecarlen 2017年11月21日 下午9:14:52
  */
+@ApiIgnore
 @Api(tags = "城市检索接口", description = "城市检索接口")
 @RestController
 @RequestMapping(value = "/dictionary/city/search", produces = { "application/json" })
