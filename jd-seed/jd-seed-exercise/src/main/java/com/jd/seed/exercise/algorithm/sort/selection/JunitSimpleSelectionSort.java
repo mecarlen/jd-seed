@@ -25,12 +25,11 @@ public class JunitSimpleSelectionSort extends SortTemplate {
 		// 排序
 		for (int firstlevel = 0; firstlevel < numCount - 1; ++firstlevel) {
 			System.out.print("第" + (firstlevel + 1) + "轮：");
+			int minIndex = firstlevel;
 			for (int secondlevel = numCount - 1; secondlevel > firstlevel; --secondlevel) {
 				// 交换
-				if (nums[firstlevel] > nums[secondlevel]) {
-					int tmp = nums[secondlevel];
-					nums[secondlevel] = nums[firstlevel];
-					nums[firstlevel] = tmp;
+				if (nums[minIndex] > nums[secondlevel]) {
+					minIndex= secondlevel;
 				}
 				// 展示
 				if (secondlevel == numCount - 1 && secondlevel == firstlevel + 1)
@@ -41,6 +40,11 @@ public class JunitSimpleSelectionSort extends SortTemplate {
 					System.out.print("," + nums[secondlevel] + "]");
 				else
 					System.out.print("," + nums[secondlevel]);
+			}
+			if(minIndex!=firstlevel){
+				int tmp = nums[minIndex];
+				nums[minIndex] = nums[firstlevel];
+				nums[firstlevel] = tmp;
 			}
 			System.out.print("->" + nums[firstlevel]);
 			System.out.println();

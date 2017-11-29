@@ -22,27 +22,19 @@ public class JunitStraightInsertionSort extends SortTemplate {
 	@Override
 	public void sort() {
 		for (int firstlevel = 1; firstlevel < numCount; firstlevel++) {
-			System.out.print("第" + firstlevel + "轮：");
-			if (nums[firstlevel] < nums[firstlevel - 1]) {
-				int secondlevel = firstlevel - 1;
-				int tmp = nums[firstlevel];
-				nums[firstlevel] = nums[firstlevel - 1];
-				while (secondlevel > 0 && nums[secondlevel] > tmp) {
+			System.out.print("第" + (firstlevel) + "轮：");
+			int tmp = nums[firstlevel];
+			for (int secondlevel = firstlevel - 1; secondlevel >= 0; secondlevel--) {
+				if (tmp < nums[secondlevel]) {
 					nums[secondlevel + 1] = nums[secondlevel];
-					secondlevel--;
+					nums[secondlevel] = tmp;
 				}
-				nums[secondlevel + 1] = tmp;
-			}
-			for (int i = 0; i <= firstlevel; i++) {
-				if (i == 0 && i == firstlevel)
-					System.out.print("[" + nums[i] + "]");
-				else if (i == 0)
-					System.out.print("[" + nums[i]);
-				else if (i == firstlevel)
-					System.out.print("," + nums[i] + "]");
+				if (secondlevel == firstlevel - 1)
+					System.out.print("[" + nums[secondlevel + 1]);
 				else
-					System.out.print("," + nums[i]);
+					System.out.print("," + nums[secondlevel + 1]);
 			}
+			System.out.print("," + nums[0] + "]");
 			System.out.println();
 		}
 	}

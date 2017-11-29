@@ -30,9 +30,9 @@ public class JunitRepository {
 	@Resource
 	private CityRepository cityRepository;
 
-//	@Test
+	@Test
 	public void insert() {
-		CityEntity city = new CityEntity.Builder("福州", "").zhFullPin("FuZhou").zhShortPin("FZ")
+		CityEntity city = new CityEntity.Builder("福州", "d_c_0302").zhFullPin("FuZhou").zhShortPin("FZ")
 				.build().priority(32).enName("FUZHOU");
 		cityRepository.insert(city);
 		System.out.println(city.getId()+"---->");
