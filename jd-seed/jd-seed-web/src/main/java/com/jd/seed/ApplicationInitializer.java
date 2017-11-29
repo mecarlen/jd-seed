@@ -37,7 +37,11 @@ public class ApplicationInitializer extends SpringBootServletInitializer {
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
 		return builder.sources(ApplicationInitializer.class);
 	}
-
+	
+//	public static void main(String[] args) throws Exception {
+//		SpringApplication.run(ApplicationInitializer.class, args);
+//	}
+	
 	/**
 	 * <pre>
 	 * swagger资源加入spring boot
@@ -49,9 +53,9 @@ public class ApplicationInitializer extends SpringBootServletInitializer {
 
 		@Override
 		public void addResourceHandlers(ResourceHandlerRegistry registry) {
-			// super.addResourceHandlers(registry);
+			 super.addResourceHandlers(registry);
 			registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
-
+			
 			registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
 
 		}
