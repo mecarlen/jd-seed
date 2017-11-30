@@ -37,7 +37,7 @@ public class JunitService {
 
 	@Test
 	public void querySingle() {
-		CityVO city = cityService.query(1L);
+		CityVO city = cityService.query(2L);
 		isTrue(null != city, "query single city failure");
 	}
 

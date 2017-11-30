@@ -25,7 +25,7 @@ import springfox.documentation.annotations.ApiIgnore;
  * @author mecarlen 2017年11月23日 下午2:06:10
  */
 @ApiIgnore
-@Api(tags = "城市", description = "城市操作相关接口")
+@Api(description="城市")
 @RestController
 @RequestMapping(value = "/dictionary/city", produces = { "application/json" })
 public class CityController {
@@ -40,7 +40,8 @@ public class CityController {
 
 	@ApiOperation("更新城市")
 	@RequestMapping(value = "/modify/{cityId}", method = RequestMethod.PUT)
-	public boolean modify(@ApiParam("城市id") @PathVariable(value = "cityId", required = true) Long id, @RequestBody CityVO city) {
+	public boolean modify(@ApiParam("城市id") @PathVariable(value = "cityId", required = true) Long id,
+			@RequestBody CityVO city) {
 		return cityService.modify(city.id(id));
 	}
 }

@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.8.RELEASE</version>
+		<version>1.5.9.RELEASE</version>
 	</parent>
 	<groupId>com.jd.seed</groupId>
 	<artifactId>jd-seed</artifactId>
@@ -16,6 +16,8 @@
 		<proj.version>1.0-SNAPSHOT</proj.version>
 		<project.encoding>UTF-8</project.encoding>
 		<jdk.version>1.8</jdk.version>
+		<thymeleaf.version>3.0.2.RELEASE</thymeleaf.version>
+        <thymeleaf-layout-dialect.version>2.1.1</thymeleaf-layout-dialect.version>
 	</properties>
 	<build>
 		<sourceDirectory>src/main/java</sourceDirectory>

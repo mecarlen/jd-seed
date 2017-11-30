@@ -26,13 +26,13 @@ import springfox.documentation.annotations.ApiIgnore;
  * @author mecarlen 2017年11月21日 下午9:14:52
  */
 @ApiIgnore
-@Api(tags = "城市检索接口", description = "城市检索接口")
+@Api(description = "城市检索接口")
 @RestController
 @RequestMapping(value = "/dictionary/city/search", produces = { "application/json" })
 public class CitySearchController {
 	@Resource
 	private CityService cityService;
-	
+
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	@ApiOperation("检索所有城市列表")
 	public List<CityVO> list() {
@@ -40,7 +40,7 @@ public class CitySearchController {
 	}
 
 	@ApiOperation("根据城市id检索城市")
-	@RequestMapping(value = "/byId/{cityId}", method = RequestMethod.GET,produces="application/json")
+	@RequestMapping(value = "/byId/{cityId}", method = RequestMethod.GET, produces = "application/json")
 	public CityVO byId(
 			@ApiParam(value = "城市id", required = true) @PathVariable(required = true, name = "cityId") Long id) {
 		return cityService.query(id);

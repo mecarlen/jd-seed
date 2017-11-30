@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xml>
 <configuration>
+	<include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <logger name="org.springframework.web" level="DEBUG"/>
 	<!-- 通用属性配置 -->
 	<property name="ROOT_PATH" value="D:/export/Logs/seed.jd.com" />
-	<property name="LOG_LEVEL" value="info"/>
+	<property name="LOG_LEVEL" value="debug"/>
 	<!-- 航班相关服务日志 -->
     <appender name="SEED-DICT" class="ch.qos.logback.core.rolling.RollingFileAppender">
     	<file>${ROOT_PATH}/seed-dict.log</file>
@@ -43,6 +45,9 @@
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="SEED-ALL"/>
     </logger>
+    <root level="debug">
+        <appender-ref ref="CONSOLE"/>
+    </root>
     <root level="error">
         <appender-ref ref="CONSOLE"/>
     </root>
