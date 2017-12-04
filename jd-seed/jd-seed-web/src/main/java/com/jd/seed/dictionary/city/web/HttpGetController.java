@@ -17,7 +17,6 @@ import io.swagger.annotations.ApiParam;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import springfox.documentation.annotations.ApiIgnore;
 
 /**
  * <pre>
@@ -32,7 +31,6 @@ import springfox.documentation.annotations.ApiIgnore;
 @RequestMapping(value = "/http")
 public class HttpGetController {
 
-	@ApiIgnore
 	@GetMapping(value = "/get")
 	public String get() {
 
@@ -56,7 +54,7 @@ public class HttpGetController {
 		return result;
 	}
 
-	@PostMapping(value = "/url/paramsJson")
+	@PostMapping(value = "/get/url/paramsJson")
 	public @ResponseBody BaseResult<String> urlAndJsonParams(String url, @RequestBody Map<String, Object> paramlist)
 			throws IOException {
 		OkHttpClient client = new OkHttpClient();
