@@ -208,6 +208,7 @@
 		<module>jd-seed-base</module>
 		<module>jd-seed-base-rpc</module>
 		<module>jd-seed-domain</module>
+		<module>jd-seed-exercise</module>
 		<module>jd-seed-repository</module>
 		<module>jd-seed-rpc</module>
 	    <module>jd-seed-rpc-client</module>
