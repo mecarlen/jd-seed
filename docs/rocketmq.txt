@@ -1,0 +1,3 @@
+﻿nameserver启动：start mqnamesrv.cmd
+broker启动: mqbroker.cmd -n 127.0.0.1:9876 autoCreateTopicEnable=true
+console启动：java -jar rocketmq-console-ng-1.0.0.jar --rocketmq.config.namesrvAddr=127.0.0.1:9876

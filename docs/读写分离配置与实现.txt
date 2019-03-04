@@ -1,0 +1,82 @@
+﻿背景
+1、练习
+2、根据以往项目经验，工程后期变化主要是查询，而原有的核心业务操作基本稳定
+3、随着业务发展，支撑核心业务的数据库表变得异常庞大导致系统性能整体下降，
+   常见的解决方案是分表和分库，分表分库有垂直和水平两种
+4、分库分表后通过ES实现聚合查询与检索
+一、基本读写分离
+1、已实现数据库一主一从
+2、工程多数据源配置
+	<!-- 配置数据源-写 -->
+	<bean name="dataSource_rw" class="com.alibaba.druid.pool.DruidDataSource"
+		init-method="init" destroy-method="close">
+		<property name="driverClassName" value="${datasource.driver-class-name}" />
+		<property name="url" value="${datasource.url}" />
+		<property name="username" value="${datasource.username}" />
+		<property name="password" value="${datasource.password}" />
+		<!-- 初始化连接大小 -->
+		<property name="initialSize" value="0" />
+		<!-- 连接池最大使用连接数量 -->
+		<property name="maxActive" value="20" />
+		<!-- 连接池最小空闲 -->
+		<property name="minIdle" value="0" />
+		<!-- 获取连接最大等待时间 -->
+		<property name="maxWait" value="15000" />
+		<property name="timeBetweenEvictionRunsMillis" value="60000"/>
+		<property name="minEvictableIdleTimeMillis" value="180000"/>
+		<property name="validationQuery" value="SELECT 'x'"/>
+		<property name="testWhileIdle" value="true"/>
+		<property name="testOnBorrow" value="false"/>
+		<property name="testOnReturn" value="false"/>
+	</bean>
+	<bean id="sqlSessionFactory_rw" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource_rw" />
+		<property name="mapperLocations" value="classpath*:com/jd/seed/**/repository/*.xml" />
+		<property name="configLocation" value="classpath:mybatis-config.xml" />
+	</bean>
+	<!-- Transaction manager for a single JDBC DataSource -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource_rw" />
+	</bean>
+
+	<!-- 使用annotation定义事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory_rw"/>
+		<property name="basePackage" value="com.jd.seed.**.repository" />
+	</bean>
+	<!-- 配置数据源-读 -->
+	<bean name="dataSource_r" class="com.alibaba.druid.pool.DruidDataSource"
+		init-method="init" destroy-method="close">
+		<property name="driverClassName" value="${datasource.driver-class-name}" />
+		<property name="url" value="${datasource_r.url}" />
+		<property name="username" value="${datasource_r.username}" />
+		<property name="password" value="${datasource_r.password}" />
+		<!-- 初始化连接大小 -->
+		<property name="initialSize" value="0" />
+		<!-- 连接池最大使用连接数量 -->
+		<property name="maxActive" value="20" />
+		<!-- 连接池最小空闲 -->
+		<property name="minIdle" value="0" />
+		<!-- 获取连接最大等待时间 -->
+		<property name="maxWait" value="15000" />
+		<property name="timeBetweenEvictionRunsMillis" value="60000"/>
+		<property name="minEvictableIdleTimeMillis" value="180000"/>
+		<property name="validationQuery" value="SELECT 'x'"/>
+		<property name="testWhileIdle" value="true"/>
+		<property name="testOnBorrow" value="false"/>
+		<property name="testOnReturn" value="false"/>
+	</bean>
+	<bean id="sqlSessionFactory_r" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource_r" />
+		<property name="mapperLocations" value="classpath*:com/jd/seed/**/query/*.xml" />
+		<property name="configLocation" value="classpath:mybatis-config.xml" />
+	</bean>
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory_r"/>
+		<property name="basePackage" value="com.jd.seed.**.query" />
+	</bean>
+二、分库分表
+
+三、ES聚合与搜索
