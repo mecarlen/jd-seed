@@ -1,0 +1,12 @@
+!!com.jd.tms.api.AuthenicationConfig
+auths:
+  A10001:
+    appCode: A10001
+    sclist: [m10001, m10002]
+    securityKey: c503580232444d73bf6f292f965d4132
+  A10002:
+    appCode: A10002
+    sclist: [m10001, m10002, m10003]
+    securityKey: 23597c063a0f4cb4a86e42435b93b123
+version: '20180327'
+state: 1

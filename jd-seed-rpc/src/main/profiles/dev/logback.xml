@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<configuration>
+	<include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <logger name="org.springframework.web" level="DEBUG"/>
+	<!-- 通用属性配置 -->
+	<property name="ROOT_PATH" value="D:/export/Logs/seed.jd.com" />
+	<property name="LOG_LEVEL" value="debug"/>
+	<!-- 航班相关服务日志 -->
+    <appender name="SEED-DICT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    	<file>${ROOT_PATH}/seed-dict.log</file>
+    	<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	        <fileNamePattern>${ROOT_PATH}/seed-dict-%d{yyyy-MM-dd}.log</fileNamePattern>
+	        <maxHistory>5</maxHistory>
+	    </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}|%X{userPin}|%X{invokeNo}|%thread|%-5level|%logger{36}[%F:%L]|%msg%n</pattern>
+        </encoder>
+        <append>true</append>  
+    	<prudent>false</prudent>  
+    </appender>
+	<logger name="com.jd.seed.dictionary" level="${LOG_LEVEL}" additivity="false">
+        <appender-ref ref="SEED-DICT"/>
+    </logger>
+    <!-- 机票默认日志 -->
+    <appender name="SEED-ALL" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    	<file>${ROOT_PATH}/seed-all.log</file>
+    	<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	        <fileNamePattern>${ROOT_PATH}/seed-all-%d{yyyy-MM-dd}.log</fileNamePattern>
+	        <maxHistory>15</maxHistory>
+	    </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}|%X{userPin}|%X{invokeNo}|%thread|%-5level|%logger{36}[%F:%L]|%msg%n</pattern>
+        </encoder>
+        <append>true</append>  
+    	<prudent>false</prudent>  
+    </appender>
+    
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}|%X{userPin}|%X{invokeNo}|%thread|%-5level|%logger{36}[%F:%L]|%msg%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="com.jd.seed" level="${LOG_LEVEL}" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="SEED-ALL"/>
+    </logger>
+    <root level="debug">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+    <root level="error">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jd.seed.organization.query.EmployeeQuery">
+	<sql id="allFields">
+		id,unity_code,sn,full_name,erp_account,password,email,mobile,phone,descr,state,create_time,update_time
+	</sql>
+	<sql id="allConditions">
+		<where>
+			<if test="unityCode != null and unityCode != ''"> and unity_code = #{unityCode}</if>
+			<if test="fullName != null and fullName != ''"> and full_name = #{fullName}</if>
+			<if test="erpAccount != null and erpAccount != ''"> and erp_account = #{erpAccount}</if>
+			<if test="email != null and email != ''"> and email = #{email}</if>
+			<if test="phone != null and phone != ''"> and phone = #{phone}</if>
+			<if test="department != null and department.id != null"> and department_id = #{department.id}</if>
+			<if test="post != null and post.id != null"> and post_id = #{post.id}</if>
+			<if test="state != null"> and state = #{state}</if>
+		</where>
+	</sql>
+	<select id="selectById" parameterType="java.lang.Long" resultType="EmployeeEntity">
+		select
+			<include refid="allFields"/>
+		from
+			org_employee 
+		where 
+			id = #{id}
+	</select>
+	<select id="selectAll" resultType="EmployeeEntity">
+		select
+			<include refid="allFields"/>
+		from 
+			org_employee
+	</select>
+	<select id="select" parameterType="EmployeeEntity" resultType="EmployeeEntity">
+		select
+			<include refid="allFields" />
+		from 
+			org_employee
+		<include refid="allConditions" />
+		order by create_time desc
+	</select>
+</mapper>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mail>
+	<config>
+		<mailServerHost>smtp.163.com</mailServerHost>
+		<mailServerPort>25</mailServerPort>
+		<fromAddress>tmsyhd@163.com</fromAddress>
+		<userName>tmsyhd</userName>
+		<password>a2222222</password>
+		<validate>true</validate>
+	</config>
+	<templates>
+		<!-- 产品相关邮件模板 begin -->
+		<!-- 添加成功通知产品经理模板 -->
+		<template name='product_add_'>
+			<subject><![CDATA[通过邮件模块发送邮件给: ${toUser}并抄送给${ccUser}]]></subject>
+			<content>
+				<![CDATA[${toUser}，您好!<br><br>
+				&nbsp;&nbsp;&nbsp;&nbsp;印尼${productName}产品已发布，请知晓，产品信息如下:<br><br>
+				<table style="width:95%;margin:5px auto;border:1px solid #0099FF;">
+					<tr style="background:#6699CC;height:22px;text-align:center;font-weight:bold;color:#000000;">
+					<td>产品线</td><td>产品名称</td><td>产品简称</td><td>产品经理</td><td>状态</td><td>创建时间</td></tr>
+					${productinfo}
+				</table>
+				&nbsp;&nbsp;&nbsp;&nbsp;iTMS-jx：<a href="http://itms.j-express.id" target="_blank">http://itms.j-express.id</a>
+				<br><br><br><br><br>
+				<table style="width:95%;" cellpadding="0" cellspacing="0">
+					<tr>
+						<td colspan="2">${currTime}</td>
+					</tr>
+					<tr>
+						<td>---------------------------------------------------</td>
+					</tr>
+					<tr>
+						<td>
+						${userinfo}
+						</td>
+					</tr>
+					<tr>
+						<td>地址：湖北省武汉市东湖高新技术开发区光谷大道61号（三环边） 光谷智慧园 26栋</td>
+					</tr>
+					<tr>
+						<td>邮编：430200</td>
+					</tr>
+					<tr>
+						<td>---------------------------------------------------</td>
+					</tr>
+				</table>
+				]]>
+			</content>
+		</template>
+	</templates>
+</mail>

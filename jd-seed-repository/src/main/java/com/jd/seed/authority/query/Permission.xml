@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jd.seed.authority.query.PermissionQuery">
+	<resultMap type="PermissionEntity" id="permissionMap">
+		<id column="id" property="id" />
+		<result column="operation" property="operation"/>
+		<result column="with_opt" property="withOpt"/>
+		<result column="state" property="state"/>
+		<result column="create_time" property="createTime"/>
+		<result column="update_time" property="updateTime"/>
+		<association property="role" column="role_id" select="com.jd.seed.authority.query.RoleQuery.selectById" fetchType="lazy"/>
+		<discriminator javaType="java.lang.Integer" column="res_type">
+			<case value="0" resultType="PermissionEntity">
+				<association property="resource" column="resource_id" select="com.jd.seed.authority.query.MenuQuery.selectById" fetchType="lazy"/>
+			</case>
+		</discriminator>
+	</resultMap>
+	<sql id="allFields">
+		id,role_id,resource_id,res_type,operation,with_opt,state,create_time,update_time
+	</sql>
+	<sql id="allConditions">
+		<where>
+			<if test="id != null"> id = #{id} </if>
+			<if test="role != null"> and role_id = #{role.id}</if>
+			<if test="resource != null"> and resource_id = #{resource.id}</if>
+			<if test="operation != null"> and operation = #{operation}</if>
+			<if test="withOpt == true"> and with_opt = 1</if>
+			<if test="withOpt == false"> and with_opt = 1</if>
+			<if test="state != null"> and state = #{state}</if>
+		</where>
+	</sql>
+	<select id="selectById" parameterType="java.lang.Long" resultMap="permissionMap">
+		select
+			<include refid="allFields" />
+		from 
+			auth_permission
+		where
+			id = #{id}
+	</select>
+	<select id="selectAll" resultMap="permissionMap">
+		select
+			<include refid="allFields" />
+		from 
+			auth_permission
+	</select>
+	<select id="select" parameterType="PermissionEntity" resultMap="permissionMap">
+		select
+			<include refid="allFields" />
+		from 
+			auth_permission
+		<include refid="allConditions"/>
+		order by create_time
+	</select>
+</mapper>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jd.seed.authority.repository.UserGroupRepository">
+	<insert id="insert" parameterType="UserGroupEntity" useGeneratedKeys="true" keyProperty="id">
+		insert into auth_user_group(user_id,group_id,user_type,state)
+		values(#{user.id},#{group.id},#{userType},#{state})
+	</insert>
+	<update id="update" parameterType="UserGroupEntity">
+		update
+			auth_user_group
+		set
+			user_id = #{user.id},
+			user_type = #{userType},
+			group_id = #{group.id},
+			state = #{state}
+		where
+			id = #{id}
+	</update>
+	<delete id="delete" parameterType="UserGroupEntity">
+		delete from auth_user_group where id = #{id}
+	</delete>
+</mapper>

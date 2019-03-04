@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jd.seed.authority.repository.PermissionRepository">
+	<insert id="insert" parameterType="PermissionEntity" useGeneratedKeys="true" keyProperty="id">
+		insert into auth_permission(role_id,resource_id,res_type,operation,with_opt,state)
+		values(#{role.id},#{resource.id},#{resType},#{operation},#{withOpt},#{state})
+	</insert>
+	<update id="update" parameterType="PermissionEntity">
+		update
+			auth_permission
+		set
+			role_id = #{role.id},
+			resource_id = #{resource.id},
+			res_type = #{resType},
+			operation = #{operation},
+			with_opt = #{withOpt},
+			state = #{state}
+		where
+			id = #{id}
+	</update>
+	<delete id="delete" parameterType="PermissionEntity">
+		delete from auth_permission where id = #{id}
+	</delete>
+</mapper>

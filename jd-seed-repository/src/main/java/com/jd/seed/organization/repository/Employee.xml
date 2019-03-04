@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jd.seed.organization.repository.EmployeeRepository">
+	<insert id="insert" parameterType="EmployeeEntity" useGeneratedKeys="true" keyProperty="id">
+		insert into org_employee(unity_code,sn,full_name,erp_account,password,email,mobile,phone,descr,state)
+		values(#{unityCode},#{sn},#{fullName},#{erpAccount},#{password},#{email},#{mobile},#{phone},#{descr},#{state})
+	</insert>
+	<update id="update" parameterType="EmployeeEntity">
+		update
+			org_employee
+		set
+			unity_code = #{unityCode},
+			sn = #{sn},
+			full_name =  #{fullName},
+			erp_account = #{erpAccount},
+			password = #{password},
+			email = #{email},
+			mobile = #{mobile},
+			phone = #{phone},
+			descr = #{descr},
+			state = #{state}
+		where
+			id = #{id}
+	</update>
+	<delete id="delete" parameterType="EmployeeEntity">
+		delete from org_employee where id = #{id}
+	</delete>
+</mapper>

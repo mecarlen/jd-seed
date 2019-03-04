@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jd.seed.authority.repository.GroupRoleRepository">
+	<insert id="insert" parameterType="GroupRoleEntity" useGeneratedKeys="true" keyProperty="id">
+		insert into auth_group_role(group_id,role_id,state)
+		values(#{group.id},#{role.id},#{state})
+	</insert>
+	<update id="update" parameterType="GroupRoleEntity">
+		update
+			auth_group_role
+		set
+			group_id = #{group.id},
+			role_id = #{role.id},
+			state = #{state}
+		where
+			id = #{id}
+	</update>
+	<delete id="delete" parameterType="GroupRoleEntity">
+		delete from auth_group_role where id = #{id}
+	</delete>
+</mapper>

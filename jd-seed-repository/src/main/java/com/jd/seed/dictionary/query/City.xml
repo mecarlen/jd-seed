@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jd.seed.dictionary.query.CityQuery">
+	<sql id="allFields">
+		id,zh_name,en_name,unity_code,zh_full_pin,zh_short_pin,priority,state,create_time,update_time
+	</sql>
+	<sql id="allConditions">
+		<where>
+			<if test="zhName != null and zhName != ''"> and zh_name = #{zhName}</if>
+			<if test="enName != null and enName != ''"> and en_name = #{enName}</if>
+			<if test="unityCode != null and unityCode != ''"> and unity_code = #{unityCode}</if>
+			<if test="zhShortPin != null and zhShortPin != ''"> and zh_short_pin = #{zhShortPin}</if>
+			<if test="state != null"> and state = #{state}</if>
+		</where>
+	</sql>
+	<select id="select" resultType="CityEntity" parameterType="CityEntity">
+		select
+			<include refid="allFields"/>
+		from 
+			dict_city
+		<include refid="allConditions"/>
+		order by create_time
+	</select>
+	<select id="selectByUnityCode" parameterType="java.lang.String" resultType="CityEntity">
+		select
+			<include refid="allFields"/>
+		from
+			dict_city 
+		where 
+			unity_code = #{unityCode}
+	</select>
+	
+</mapper>

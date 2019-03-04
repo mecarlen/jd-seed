@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:sharding="http://shardingsphere.io/schema/shardingsphere/sharding"
+	xmlns:master-slave="http://shardingsphere.io/schema/shardingsphere/masterslave"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+	http://shardingsphere.io/schema/shardingsphere/sharding 
+    http://shardingsphere.io/schema/shardingsphere/sharding/sharding.xsd 
+    http://shardingsphere.io/schema/shardingsphere/masterslave  
+    http://shardingsphere.io/schema/shardingsphere/masterslave/master-slave.xsd">
+    <sharding:data-source id="sharding-dataSource">
+    	<sharding:sharding-rule data-source-names="sys_log_0,sys_log_1">
+    		<sharding:table-rules>
+    			<sharding:table-rule logic-table="sys_log" actual-data-nodes="${sharding-actual-table}" 
+    			database-strategy-ref="" table-strategy-ref="" generate-key-column-name="id"
+    			key-generator-ref="" logic-index=""/>
+    		</sharding:table-rules>
+    	</sharding:sharding-rule>
+    </sharding:data-source>
+</beans>

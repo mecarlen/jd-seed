@@ -1,0 +1,4 @@
+权限领域涉及：
+系统功能权限 菜单-menu,角色-role,授权-permission,操作-CRUD
+业务数据权限 数据-data,角色-role,授权-permission,操作-CRUD
+流程控制权限 任务-task,表单-form,角色-role,授权-permission,操作-CRUD

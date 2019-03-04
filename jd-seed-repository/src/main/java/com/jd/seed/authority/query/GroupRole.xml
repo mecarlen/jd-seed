@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jd.seed.authority.query.GroupRoleQuery">
+	<resultMap type="GroupRoleEntity" id="groupRoleMap">
+		<id column="id" property="id" />
+		<result column="state" property="state"/>
+		<result column="create_time" property="createTime"/>
+		<result column="update_time" property="updateTime"/>
+		<association property="group" column="group_id" select="com.jd.seed.authority.query.GroupQuery.selectById" fetchType="lazy" />
+		<association property="role" column="role_id" select="com.jd.seed.authority.query.RoleQuery.selectById" fetchType="lazy"/>
+	</resultMap>
+	<sql id="allFields">
+		id,group_id,role_id,state,create_time,update_time
+	</sql>
+	<select id="selectById" parameterType="java.lang.Long" resultMap="groupRoleMap">
+		select
+			<include refid="allFields"/>
+		from
+			auth_group_role
+		where
+			id = #{id}
+	</select>
+	<select id="selectAll" resultMap="groupRoleMap">
+		select
+			<include refid="allFields"/>
+		from
+			auth_group_role
+	</select>
+</mapper>
