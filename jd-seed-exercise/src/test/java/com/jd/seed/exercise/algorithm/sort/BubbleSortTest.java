@@ -1,4 +1,5 @@
-package com.jd.seed.exercise.algorithm.sort.selection;
+package com.jd.seed.exercise.algorithm.sort;
+
 
 import org.junit.Test;
 
@@ -12,7 +13,7 @@ import com.jd.seed.exercise.algorithm.sort.SortTemplate;
  * 
  * @author mecarlen 2017年2月25日 下午4:19:50
  */
-public class JunitSimpleSelectionSort extends SortTemplate {
+public class BubbleSortTest extends SortTemplate {
 	
 	@Test
 	@Override
@@ -25,28 +26,22 @@ public class JunitSimpleSelectionSort extends SortTemplate {
 		// 排序
 		for (int firstlevel = 0; firstlevel < numCount - 1; ++firstlevel) {
 			System.out.print("第" + (firstlevel + 1) + "轮：");
-			int minIndex = firstlevel;
-			for (int secondlevel = numCount - 1; secondlevel > firstlevel; --secondlevel) {
-				// 交换
-				if (nums[minIndex] > nums[secondlevel]) {
-					minIndex= secondlevel;
+			for (int secondlevel = 0; secondlevel < numCount - firstlevel - 1; ++secondlevel) {
+				if (nums[secondlevel] > nums[secondlevel + 1]) {
+					int tmp = nums[secondlevel];
+					nums[secondlevel] = nums[secondlevel + 1];
+					nums[secondlevel + 1] = tmp;
 				}
-				// 展示
-				if (secondlevel == numCount - 1 && secondlevel == firstlevel + 1)
+				if (secondlevel == 0 && 1 == numCount - firstlevel - 1)
 					System.out.print("[" + nums[secondlevel] + "]");
-				else if (secondlevel == numCount - 1)
+				else if (secondlevel == 0)
 					System.out.print("[" + nums[secondlevel]);
-				else if (secondlevel == firstlevel + 1)
+				else if (secondlevel == numCount - firstlevel - 2)
 					System.out.print("," + nums[secondlevel] + "]");
 				else
 					System.out.print("," + nums[secondlevel]);
 			}
-			if(minIndex!=firstlevel){
-				int tmp = nums[minIndex];
-				nums[minIndex] = nums[firstlevel];
-				nums[firstlevel] = tmp;
-			}
-			System.out.print("->" + nums[firstlevel]);
+			System.out.print("->" + nums[numCount - firstlevel - 1]);
 			System.out.println();
 		}
 	}

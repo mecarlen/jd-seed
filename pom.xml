@@ -204,6 +204,7 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+	
 	<modules>
 		<module>jd-seed-base</module>
 		<module>jd-seed-base-rpc</module>
