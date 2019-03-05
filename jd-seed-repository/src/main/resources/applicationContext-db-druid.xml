@@ -49,14 +49,16 @@
 	</bean>
 	<!-- 使用annotation定义事务 -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
+	<!-- 
 	<tx:advice id="txAdvice_rw" transaction-manager="transactionManager">
 		<tx:attributes>
 			<tx:method name="find*" read-only="true"/>
 		</tx:attributes>
 	</tx:advice>
 	<aop:config>
-		<aop:advisor advice-ref="txAdvice_rw" pointcut="execution(com.jd.seed.*.service.*Service.*(..))"/>
+		<aop:advisor advice-ref="txAdvice_rw" pointcut="execution(com.jd.seed.*.service.*Service)"/>
 	</aop:config>
+	 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 	
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory_rw"/>

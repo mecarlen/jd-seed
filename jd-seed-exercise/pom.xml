@@ -6,4 +6,6 @@
     <version>2.0-SNAPSHOT</version>
   </parent>
   <artifactId>jd-seed-exercise</artifactId>
+  <name>seed exercise</name>
+  <description>seed exercise</description>
 </project>

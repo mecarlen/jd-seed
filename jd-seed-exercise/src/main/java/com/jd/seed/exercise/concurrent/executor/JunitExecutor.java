@@ -3,8 +3,6 @@ package com.jd.seed.exercise.concurrent.executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import org.junit.Test;
-
 /**
  * <pre>
  * 线程池
@@ -15,7 +13,6 @@ import org.junit.Test;
  */
 public class JunitExecutor {
 
-	@Test
 	public void singleThreadExecutor(){
 		ExecutorService singleEs = Executors.newSingleThreadExecutor();
 		singleEs.execute(new Runnable() {

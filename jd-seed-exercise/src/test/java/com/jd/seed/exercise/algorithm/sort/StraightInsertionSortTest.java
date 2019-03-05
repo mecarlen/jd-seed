@@ -1,4 +1,4 @@
-package com.jd.seed.exercise.algorithm.sort.insertion;
+package com.jd.seed.exercise.algorithm.sort;
 
 import org.junit.Test;
 
@@ -12,7 +12,7 @@ import com.jd.seed.exercise.algorithm.sort.SortTemplate;
  * 
  * @author mecarlen 2017年11月27日 下午7:52:18
  */
-public class JunitStraightInsertionSort extends SortTemplate {
+public class StraightInsertionSortTest extends SortTemplate {
 
 	@Test
 	public void execute() {
