@@ -11,23 +11,18 @@ import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.remoting.exception.RemotingException;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringRunner;
+
+import com.jd.seed.RpcServiceBaseTest;
 
 /**
  * <pre>
- * 
+ * Mq测试类
  * 
  * </pre>
  * 
  * @author mecarlen 2018年12月25日 下午6:07:29
  */
-@RunWith(SpringRunner.class)
-@ContextConfiguration(locations = { "classpath:applicationContext-test.xml" })
-@SpringBootTest
-public class JunitMQ {
+public class JunitMQ extends RpcServiceBaseTest{
 	@Resource
 	private DefaultMQProducer producer;
 	@Test

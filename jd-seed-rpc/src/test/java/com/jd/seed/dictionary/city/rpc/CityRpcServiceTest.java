@@ -6,14 +6,11 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import com.alibaba.fastjson.JSON;
 import com.jd.jim.cli.driver.util.Assert;
 import com.jd.seed.ApiMethodFactory;
+import com.jd.seed.RpcServiceBaseTest;
 import com.jd.seed.base.rpc.RpcRequest;
 import com.jd.seed.base.rpc.RpcResponse;
 import com.jd.seed.base.rpc.security.SignBuilder;
@@ -31,10 +28,8 @@ import com.jd.seed.util.security.DESCoder;
  * 
  * @author mecarlen 2018年4月1日 下午1:00:55
  */
-@RunWith(SpringRunner.class)
-@ContextConfiguration(locations = { "classpath:applicationContext-test.xml" })
-@SpringBootTest
-public class JunitCityRpcService {
+
+public class CityRpcServiceTest extends RpcServiceBaseTest{
 	@Resource
 	private CityRpcService cityRpcService;
 
