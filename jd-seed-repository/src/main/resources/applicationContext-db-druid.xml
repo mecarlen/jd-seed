@@ -47,8 +47,8 @@
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource_rw" />
 	</bean>
-	<!-- 使用annotation定义事务 -->
-	<tx:annotation-driven transaction-manager="transactionManager" />
+	<!-- 使用annotation定义事务 
+	<tx:annotation-driven transaction-manager="transactionManager" />-->
 	<!-- 
 	<tx:advice id="txAdvice_rw" transaction-manager="transactionManager">
 		<tx:attributes>

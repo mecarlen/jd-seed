@@ -4,7 +4,7 @@ import java.util.Date;
 
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
-import org.springframework.data.elasticsearch.annotations.FieldIndex;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import com.jd.seed.base.domain.BaseEntity;
 import com.jd.seed.base.domain.Entity;
@@ -19,10 +19,10 @@ import com.jd.seed.dictionary.city.City;
  *
  * @author mecarlen 2017年11月21日 上午10:28:07
  */
-@Document(indexName="seed",type="dict_city")
+@Document(indexName = "seed", type = "dict_city")
 public class CityEntity extends BaseEntity<Long, CityVO> implements City, Dictionary, Entity<Long> {
 	// 中文名
-	@Field(index=FieldIndex.analyzed,analyzer="ik",searchAnalyzer="ik",store=true)
+	@Field(type = FieldType.Auto, analyzer = "ik_max_word", searchAnalyzer = "ik_max_word", store = true)
 	private String zhName;
 	// 英文名
 	private String enName;
