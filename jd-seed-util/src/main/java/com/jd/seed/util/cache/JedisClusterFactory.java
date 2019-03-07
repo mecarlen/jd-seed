@@ -22,7 +22,7 @@ import redis.clients.jedis.JedisCluster;
 public class JedisClusterFactory implements FactoryBean<JedisCluster>, InitializingBean {
 
 	// 连接池参数 spring 注入
-	private GenericObjectPoolConfig genericObjectPoolConfig;
+	private GenericObjectPoolConfig<?> genericObjectPoolConfig;
 	//
 	private JedisCluster jedisCluster;
 	private int connectionTimeout = 2000;
@@ -67,11 +67,11 @@ public class JedisClusterFactory implements FactoryBean<JedisCluster>, Initializ
 		return true;
 	}
 
-	public GenericObjectPoolConfig getGenericObjectPoolConfig() {
+	public GenericObjectPoolConfig<?> getGenericObjectPoolConfig() {
 		return genericObjectPoolConfig;
 	}
 
-	public void setGenericObjectPoolConfig(GenericObjectPoolConfig genericObjectPoolConfig) {
+	public void setGenericObjectPoolConfig(GenericObjectPoolConfig<?> genericObjectPoolConfig) {
 		this.genericObjectPoolConfig = genericObjectPoolConfig;
 	}
 

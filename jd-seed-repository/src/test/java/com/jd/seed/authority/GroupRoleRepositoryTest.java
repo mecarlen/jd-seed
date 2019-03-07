@@ -1,5 +1,6 @@
 package com.jd.seed.authority;
 
+
 import static org.springframework.util.Assert.isTrue;
 
 import java.util.List;

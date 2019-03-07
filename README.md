@@ -7,7 +7,7 @@ seed project init
 
 1.2、项目实践涉及技术
 corejava 1.8
-spring-boot-1.5.18.RELEASE
+spring-boot-1.5.18.RELEASE --> spring-boot-2.1.3
 springMVC、springData
 git
 mysql 一主一从 实现读写分离

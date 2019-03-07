@@ -1,6 +1,5 @@
 package com.jd.seed;
 
-import static org.springframework.util.Assert.isTrue;
 
 import java.util.List;
 
@@ -8,6 +7,7 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
+import static org.springframework.util.Assert.isTrue;
 
 import com.jd.seed.authority.domain.MenuEntity;
 import com.jd.seed.authority.query.MenuQuery;
@@ -40,24 +40,24 @@ public class JunitES extends RepositoryBaseTest {
 	private MenuQuery menuQuery;
 	@Test
 	public void createIndex() {
-		boolean exists = elasticsearchTemplate.indexExists(CityEntity.class);
+		boolean exists = elasticsearchTemplate.indexExists(MenuEntity.class);
 		boolean result = false;
 		if(!exists) {
 //			result = elasticsearchTemplate.deleteIndex(MenuEntity.class);
-			result = elasticsearchTemplate.createIndex(CityEntity.class);
+			result = elasticsearchTemplate.createIndex(MenuEntity.class);
 		}
 		isTrue(exists || result, "es create index failure");
 	}
 	
 	@Test
 	public void addDoc() {
-		List<MenuEntity> menulist = menuQuery.selectAll();
-		menuSearch.save(menulist);
+		List<CityEntity> menulist = cityQuery.selectAll();
+		citySearch.saveAll(menulist);
 	}
 	
 	@Test
 	public void findOne() {
-		MenuEntity city = menuSearch.findOne(1L);
+		MenuEntity city = menuSearch.findById(1L).get();
 		isTrue(city != null, "es search failure");
 	}
 	

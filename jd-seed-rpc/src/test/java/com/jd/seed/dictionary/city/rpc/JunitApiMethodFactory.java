@@ -3,12 +3,15 @@ package com.jd.seed.dictionary.city.rpc;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
 
+import com.alibaba.fastjson.JSON;
 import com.jd.seed.base.rpc.RpcRequest;
 import com.jd.seed.base.rpc.RpcResponse;
+import com.jd.seed.base.rpc.security.SignBuilder;
 
 /**
  * <pre>
@@ -42,5 +45,17 @@ public class JunitApiMethodFactory {
 				methodlist.add(methodDeclare.toString());
 			}
 		}
+	}
+	
+	@Test
+	public void getRequest() {
+		RpcRequest<String> request = new RpcRequest<String>();
+		request.setAppCode("A10001");
+		request.setServiceCode("dict_1001");
+		request.setTimestamp(String.valueOf(new Date().getTime()));
+		request.setParams("d_c_0001");
+		String securityKey = "c503580232444d73bf6f292f965d4132";
+		request.setSign(SignBuilder.buildSign(request, securityKey));
+		System.out.println(JSON.toJSONString(request));
 	}
 }
