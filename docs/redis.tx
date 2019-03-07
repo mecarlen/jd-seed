@@ -1,0 +1,28 @@
+Redis 3.2.1(3主3从配置)
+
+修改其他配置支持集群
+cluster-enabled yes
+cluster-config-file nodes-6379.conf
+cluster-node-timeout 15000
+appendonly yes
+
+如果cluster-enabled 不为yes， 那么在使用JedisCluster集群代码获取的时候，会报错。
+cluster-node-timeout 调整为  15000，那么在创建集群的时候，不会超时。
+cluster-config-file nodes-6379.conf 是为该节点的配置信息，这里使用 nodes-端口.conf命名方法。服务启动后会在目录生成该文件
+
+集群的命令:
+ruby redis-trib.rb create --replicas 1 127.0.0.1:6379 127.0.0.1:6380 127.0.0.1:6381 127.0.0.1:6382 127.0.0.1:6383 127.0.0.1:6384
+
+--replicas 1 表示每个主数据库拥有从数据库个数为1。master节点不能少于3个，所以我们用了6个redis
+--------------------- 
+作者：猪脚踏浪 
+来源：CSDN 
+原文：https://blog.csdn.net/zsg88/article/details/73715947 
+版权声明：本文为博主原创文章，转载请附上博文链接！
+--------------------------------------------------------------
+参考：
+https://blog.csdn.net/zsg88/article/details/73715947
+https://www.jianshu.com/p/783b4a319d22
+https://blog.csdn.net/aaaadong/article/details/82625567
+
+启动：redis-server.exe redis.windows.conf

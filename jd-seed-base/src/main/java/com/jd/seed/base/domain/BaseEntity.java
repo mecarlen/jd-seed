@@ -6,7 +6,7 @@ import java.util.Date;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.DateFormat;
 import org.springframework.data.elasticsearch.annotations.Field;
-import org.springframework.data.elasticsearch.annotations.FieldIndex;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
@@ -27,14 +27,14 @@ public abstract class BaseEntity<ID extends Serializable, V extends BaseVO<ID, ?
 	@Id
 	protected ID id;
 	// 状态
-	protected Integer state;	
+	protected Integer state;
 	// 创建时间
-	@Field(index=FieldIndex.not_analyzed,format=DateFormat.custom,pattern="yyyy-MM-dd HH:mm:ss:SSS",store=true)
-	@JsonFormat(shape=Shape.STRING,pattern="yyyy-MM-dd HH:mm:ss:SSS",timezone="GMT+8")
+	@Field(type = FieldType.Auto, format = DateFormat.custom, pattern = "yyyy-MM-dd HH:mm:ss:SSS", store = true)
+	@JsonFormat(shape = Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss:SSS", timezone = "GMT+8")
 	protected Date createTime;
 	// 更新时间
-	@Field(index=FieldIndex.not_analyzed,format=DateFormat.custom,pattern="yyyy-MM-dd HH:mm:ss:SSS",store=true)
-	@JsonFormat(shape=Shape.STRING,pattern="yyyy-MM-dd HH:mm:ss:SSS",timezone="GMT+8")
+	@Field(type = FieldType.Auto, format = DateFormat.custom, pattern = "yyyy-MM-dd HH:mm:ss:SSS", store = true)
+	@JsonFormat(shape = Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss:SSS", timezone = "GMT+8")
 	protected Date updateTime;
 
 	// setter

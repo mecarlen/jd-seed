@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jd.seed.dictionary.repository.CityRepository">
-	<sql id="allFields">
-		id,zh_name,en_name,unity_code,zh_full_pin,zh_short_pin,priority,state,create_time,update_time
-	</sql>
 	<insert id="insert" parameterType="CityEntity" useGeneratedKeys="true" keyProperty="id">
 		insert into dict_city(zh_name,en_name,unity_code,zh_full_pin,zh_short_pin,priority,state)
 		values(#{zhName},#{enName},#{unityCode},#{zhFullPin},#{zhShortPin},#{priority},#{state})
@@ -25,19 +22,4 @@
 	<delete id="delete" parameterType="CityEntity">
 		delete from dict_city where id = #{id}
 	</delete>
-	<select id="selectById" parameterType="java.lang.Long" resultType="CityEntity">
-		select
-			<include refid="allFields"/>
-		from
-			dict_city 
-		where 
-			id = #{id}
-	</select>
-	<select id="selectAll" resultType="CityEntity">
-		select
-			<include refid="allFields"/>
-		from 
-			dict_city
-	</select>
-	
 </mapper>

@@ -13,6 +13,20 @@
 			<if test="state != null"> and state = #{state}</if>
 		</where>
 	</sql>
+	<select id="selectById" parameterType="java.lang.Long" resultType="CityEntity">
+		select
+			<include refid="allFields"/>
+		from
+			dict_city 
+		where 
+			id = #{id}
+	</select>
+	<select id="selectAll" resultType="CityEntity">
+		select
+			<include refid="allFields"/>
+		from 
+			dict_city
+	</select>
 	<select id="select" resultType="CityEntity" parameterType="CityEntity">
 		select
 			<include refid="allFields"/>

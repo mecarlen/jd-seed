@@ -1,3 +1,9 @@
 ﻿version:2.4.2->6.2.2
 6.2.2版本head插件启动方式
 elasticsearch-head>grunt server
+spring-data-elasticsearch 3.1.x对乏型属性兼容bug,如下BaseEntity类中乏型字段id的因类型取不到报Type must not be null异常
+public class BaseEntity<ID,BaseVO> implements Entity<ID>{
+	@Id
+	private ID id;
+	
+}

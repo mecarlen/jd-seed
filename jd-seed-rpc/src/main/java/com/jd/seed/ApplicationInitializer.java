@@ -1,17 +1,17 @@
 package com.jd.seed;
 
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.Profile;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import io.swagger.annotations.ApiOperation;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -29,7 +29,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * 
  * @author mecarlen 2017年11月21日 下午8:57:26
  */
-@EnableAutoConfiguration
 @SpringBootApplication
 @ImportResource(locations = { "classpath:applicationContext.xml" })
 public class ApplicationInitializer extends SpringBootServletInitializer {
@@ -38,11 +37,11 @@ public class ApplicationInitializer extends SpringBootServletInitializer {
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
 		return builder.sources(ApplicationInitializer.class);
 	}
-	
-//	public static void main(String[] args) throws Exception {
-//		SpringApplication.run(ApplicationInitializer.class, args);
-//	}
-	
+
+	// public static void main(String[] args) throws Exception {
+	// SpringApplication.run(ApplicationInitializer.class, args);
+	// }
+
 	/**
 	 * <pre>
 	 * swagger资源加入spring boot
@@ -50,24 +49,23 @@ public class ApplicationInitializer extends SpringBootServletInitializer {
 	 * </pre>
 	 */
 	@Configuration
-	static class SwaggerStaticResourcesConfiguration extends WebMvcConfigurerAdapter {
+	@EnableSwagger2
+	static class SwaggerStaticResourcesConfiguration implements WebMvcConfigurer {
 
 		@Override
 		public void addResourceHandlers(ResourceHandlerRegistry registry) {
-			 super.addResourceHandlers(registry);
+
 			registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
-			
+
 			registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
 
 		}
 
 		@Override
 		public void addInterceptors(InterceptorRegistry registry) {
-			super.addInterceptors(registry);
 			registry.addInterceptor(new PageInterceptor()).addPathPatterns("/**/page/**");
 		}
-		
-		
+
 	}
 
 	/**
@@ -81,13 +79,14 @@ public class ApplicationInitializer extends SpringBootServletInitializer {
 	 */
 	@Configuration
 	@EnableSwagger2
-	@Profile({"dev","test","pre"})
+	@Profile({ "dev", "test", "pre" })
 	static class RestAPIDoc {
 		@Bean
 		public Docket api() {
 			return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo()).select()
 					.apis(RequestHandlerSelectors.basePackage("com.jd.seed"))
-					.paths(PathSelectors.any()).build();
+					.apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class)).paths(PathSelectors.any())
+					.build();
 
 		}
 
