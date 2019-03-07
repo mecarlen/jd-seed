@@ -1,6 +1,7 @@
 package com.jd.seed.authority;
 
-import static com.jd.jim.cli.driver.util.Assert.isTrue;
+
+import static org.springframework.util.Assert.isTrue;
 
 import java.util.List;
 

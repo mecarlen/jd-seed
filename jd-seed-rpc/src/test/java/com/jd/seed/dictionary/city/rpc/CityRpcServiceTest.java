@@ -6,9 +6,9 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.junit.Test;
+import org.springframework.util.Assert;
 
 import com.alibaba.fastjson.JSON;
-import com.jd.jim.cli.driver.util.Assert;
 import com.jd.seed.ApiMethodFactory;
 import com.jd.seed.RpcServiceBaseTest;
 import com.jd.seed.base.rpc.RpcRequest;

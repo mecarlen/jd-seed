@@ -1,8 +1,8 @@
 package com.jd.seed.util;
 
-import static com.jd.jim.cli.driver.util.Assert.isTrue;
 
 import org.junit.Test;
+import static org.springframework.util.Assert.isTrue;
 
 import com.jd.seed.util.regex.EnumCommonRegexPattern;
 

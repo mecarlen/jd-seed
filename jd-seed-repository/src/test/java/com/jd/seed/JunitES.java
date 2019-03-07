@@ -1,6 +1,5 @@
 package com.jd.seed;
 
-import static com.jd.jim.cli.driver.util.Assert.isTrue;
 
 import java.util.List;
 
@@ -8,6 +7,7 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
+import static org.springframework.util.Assert.isTrue;
 
 import com.jd.seed.authority.domain.MenuEntity;
 import com.jd.seed.authority.query.MenuQuery;

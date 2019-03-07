@@ -67,11 +67,11 @@ public class JedisClusterFactory implements FactoryBean<JedisCluster>, Initializ
 		return true;
 	}
 
-	public GenericObjectPoolConfig getGenericObjectPoolConfig() {
+	public GenericObjectPoolConfig<?> getGenericObjectPoolConfig() {
 		return genericObjectPoolConfig;
 	}
 
-	public void setGenericObjectPoolConfig(GenericObjectPoolConfig genericObjectPoolConfig) {
+	public void setGenericObjectPoolConfig(GenericObjectPoolConfig<?> genericObjectPoolConfig) {
 		this.genericObjectPoolConfig = genericObjectPoolConfig;
 	}
 
