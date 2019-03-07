@@ -12,7 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.alibaba.fastjson.JSON;
-import com.jd.jim.cli.driver.util.Assert;
+import static org.springframework.util.Assert.isTrue;
 import com.jd.seed.ApiMethodFactory;
 import com.jd.seed.base.rpc.RpcRequest;
 import com.jd.seed.base.rpc.RpcResponse;
@@ -62,7 +62,7 @@ public class JunitCityRpcService {
 		request.setSign(SignBuilder.buildSign(request, securityKey));
 		System.out.println("----->" + JSON.toJSONString(request));
 		RpcResponse<List<City>> response = cityRpcService.queryAllCity(request);
-		Assert.isTrue(response.isSuccess(), response.getErrorMsg());
+		isTrue(response.isSuccess(), response.getErrorMsg());
 	}
 
 	@Test
@@ -99,6 +99,6 @@ public class JunitCityRpcService {
 	public void buildMethod(){
 		String classFullName = "com.jd.seed.dictionary.city.rpc.CityRpcService";
 		List<String> methods = ApiMethodFactory.getServiceMethodList(classFullName);
-		Assert.isTrue(methods.size()>0,"buildMehtod failure");
+		isTrue(methods.size()>0,"buildMehtod failure");
 	}
 }
