@@ -17,6 +17,7 @@ public abstract class SortTemplate {
 		// 随机准备数据
 		Random rd = new Random();
 		nums = new int[numCount];
+		System.out.println("============"+this.getClass().getSimpleName()+"=============");
 		System.out.print("初始：");
 		for (int index = 0; index < numCount; index++) {
 			nums[index] = rd.nextInt(100);
@@ -32,11 +33,11 @@ public abstract class SortTemplate {
 
 	public void execute() {
 		init();
-		sort();
+		sort(this.nums);
 		print();
 	}
 
-	public abstract void sort();
+	public abstract void sort(int[] nums);
 
 	private void print() {
 		System.out.print("结束：");
