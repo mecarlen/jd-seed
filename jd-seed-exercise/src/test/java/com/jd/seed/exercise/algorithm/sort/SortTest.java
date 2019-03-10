@@ -3,6 +3,9 @@ package com.jd.seed.exercise.algorithm.sort;
 import org.junit.Test;
 
 import com.jd.seed.exercise.algorithm.sort.bubble.BubbleSort;
+import com.jd.seed.exercise.algorithm.sort.quick.QuickSort;
+import com.jd.seed.exercise.algorithm.sort.selection.SimpleSelectionSort;
+import com.jd.seed.exercise.algorithm.sort.selection.TwoElementsSelectionSort;
 
 /**
  * <pre>
@@ -22,7 +25,8 @@ public class SortTest {
 
 	@Test
 	public void quickSort() {
-
+		QuickSort qs = new QuickSort();
+		qs.execute();
 	}
 
 	@Test
@@ -32,9 +36,16 @@ public class SortTest {
 
 	@Test
 	public void selectionSort() {
-
+		SimpleSelectionSort sss = new SimpleSelectionSort();
+		sss.execute();
 	}
-
+	
+	@Test
+	public void twoElementsSelectionSort() {
+		TwoElementsSelectionSort tss = new TwoElementsSelectionSort();
+		tss.execute();
+	}
+	
 	@Test
 	public void mergeSort() {
 

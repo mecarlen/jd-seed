@@ -15,32 +15,52 @@ public class SimpleSelectionSort extends SortTemplate {
 	@Override
 	public void sort(int[] nums) {
 		// 排序
-		for (int firstlevel = 0; firstlevel < numCount - 1; ++firstlevel) {
-			System.out.print("第" + (firstlevel + 1) + "轮：");
-			int minIndex = firstlevel;
-			for (int secondlevel = numCount - 1; secondlevel > firstlevel; --secondlevel) {
-				// 交换
-				if (nums[minIndex] > nums[secondlevel]) {
-					minIndex = secondlevel;
-				}
-				// 展示
-				if (secondlevel == numCount - 1 && secondlevel == firstlevel + 1)
-					System.out.print("[" + nums[secondlevel] + "]");
-				else if (secondlevel == numCount - 1)
-					System.out.print("[" + nums[secondlevel]);
-				else if (secondlevel == firstlevel + 1)
-					System.out.print("," + nums[secondlevel] + "]");
-				else
-					System.out.print("," + nums[secondlevel]);
+		for (int firstlevel = 0; firstlevel < nums.length - 1; ++firstlevel) {
+			int minIdx = selectMinIdx(nums, firstlevel);
+			if(minIdx!=firstlevel) {
+				int tmp = nums[firstlevel];
+				nums[firstlevel] = nums[minIdx];
+				nums[minIdx] = tmp;
 			}
-			if (minIndex != firstlevel) {
-				int tmp = nums[minIndex];
-				nums[minIndex] = nums[firstlevel];
-				nums[firstlevel] = tmp;
-			}
-			System.out.print("->" + nums[firstlevel]);
-			System.out.println();
+			print(firstlevel+1);
 		}
+
+	}
+
+	/**
+	 * <pre>
+	 * 选择值最小的下标
+	 * 
+	 * </pre>
+	 * 
+	 */
+	int selectMinIdx(int[] nums, int firstlevel) {
+		int minIdx = firstlevel;
+		for (int secondlevel = minIdx + 1; secondlevel < nums.length; ++secondlevel) {
+			if (nums[minIdx] > nums[secondlevel]) {
+				minIdx = secondlevel;
+			}
+		}
+		return minIdx;
+	}
+	
+	/**
+	 * <pre>
+	 * 排序内打印
+	 * 
+	 * </pre>
+	 */
+	void print(int times) {
+		System.out.print("当前第 " + times + " 轮:  " );
+		for (int index = 0; index < numCount; index++) {
+			if (index == 0)
+				System.out.print("[" + nums[index]);
+			else if (index == (numCount - 1))
+				System.out.print("," + nums[index] + "]");
+			else
+				System.out.print("," + nums[index]);
+		}
+		System.out.println();
 	}
 
 }
