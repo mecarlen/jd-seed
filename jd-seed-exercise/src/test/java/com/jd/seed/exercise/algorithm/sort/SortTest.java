@@ -3,6 +3,8 @@ package com.jd.seed.exercise.algorithm.sort;
 import org.junit.Test;
 
 import com.jd.seed.exercise.algorithm.sort.bubble.BubbleSort;
+import com.jd.seed.exercise.algorithm.sort.heap.HeapSort;
+import com.jd.seed.exercise.algorithm.sort.insertion.StraightInsertionSort;
 import com.jd.seed.exercise.algorithm.sort.quick.QuickSort;
 import com.jd.seed.exercise.algorithm.sort.selection.SimpleSelectionSort;
 import com.jd.seed.exercise.algorithm.sort.selection.TwoElementsSelectionSort;
@@ -31,7 +33,8 @@ public class SortTest {
 
 	@Test
 	public void insertionSort() {
-
+		StraightInsertionSort sis = new StraightInsertionSort();
+		sis.execute();
 	}
 
 	@Test
@@ -53,7 +56,8 @@ public class SortTest {
 
 	@Test
 	public void heapSort() {
-
+		HeapSort hs = new HeapSort();
+		hs.execute();
 	}
 
 	@Test
