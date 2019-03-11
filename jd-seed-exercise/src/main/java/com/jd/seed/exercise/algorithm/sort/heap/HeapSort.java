@@ -20,6 +20,7 @@ public class HeapSort extends SortTemplate {
 			int temp = nums[0];
 			nums[0] = nums[firstlevel];
 			nums[firstlevel] = temp;
+			print(nums.length-firstlevel);
 		}
 
 	}
@@ -29,24 +30,43 @@ public class HeapSort extends SortTemplate {
 	 * 将数组堆化 firstlevel = 第一个非叶子节点。 从第一个非叶子节点开始即可。无需从最后一个叶子节点开始。
 	 * 叶子节点可以看作已符合堆要求的节点，根节点就是它自己且自己以下值为最大。
 	 *
-	 * @param a
-	 * @param n
+	 * @param nums int[]
+	 * @param firstlevel int 
 	 */
-	public void max_heapify(int[] a, int n) {
+	public void max_heapify(int[] nums, int firstlevel) {
 		int child;
-		for (int i = (n - 1) / 2; i >= 0; i--) {
+		for (int secondlevel = (firstlevel - 1) / 2; secondlevel >= 0; secondlevel--) {
 			// 左子节点位置
-			child = 2 * i + 1;
+			child = 2 * secondlevel + 1;
 			// 右子节点存在且大于左子节点，child变成右子节点
-			if (child != n && a[child] < a[child + 1]) {
+			if (child != firstlevel && nums[child] < nums[child + 1]) {
 				child++;
 			}
 			// 交换父节点与左右子节点中的最大值
-			if (a[i] < a[child]) {
-				int temp = a[i];
-				a[i] = a[child];
-				a[child] = temp;
+			if (nums[secondlevel] < nums[child]) {
+				int temp = nums[secondlevel];
+				nums[secondlevel] = nums[child];
+				nums[child] = temp;
 			}
 		}
+	}
+	
+	/**
+	 * <pre>
+	 * 排序内打印
+	 * 
+	 * </pre>
+	 */
+	void print(int times) {
+		System.out.print("当前第 " + times + " 轮:  ");
+		for (int index = 0; index < numCount; index++) {
+			if (index == 0)
+				System.out.print("[" + nums[index]);
+			else if (index == (numCount - 1))
+				System.out.print("," + nums[index] + "]");
+			else
+				System.out.print("," + nums[index]);
+		}
+		System.out.println();
 	}
 }
