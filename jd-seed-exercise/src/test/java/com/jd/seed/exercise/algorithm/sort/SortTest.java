@@ -5,7 +5,9 @@ import org.junit.Test;
 import com.jd.seed.exercise.algorithm.sort.bubble.BubbleSort;
 import com.jd.seed.exercise.algorithm.sort.heap.HeapSort;
 import com.jd.seed.exercise.algorithm.sort.insertion.StraightInsertionSort;
+import com.jd.seed.exercise.algorithm.sort.merge.MergeSort;
 import com.jd.seed.exercise.algorithm.sort.quick.QuickSort;
+import com.jd.seed.exercise.algorithm.sort.radix.RadixSort;
 import com.jd.seed.exercise.algorithm.sort.selection.SimpleSelectionSort;
 import com.jd.seed.exercise.algorithm.sort.selection.TwoElementsSelectionSort;
 import com.jd.seed.exercise.algorithm.sort.shell.ShellSort;
@@ -52,7 +54,8 @@ public class SortTest {
 	
 	@Test
 	public void mergeSort() {
-
+		MergeSort ms = new MergeSort();
+		ms.execute();
 	}
 
 	@Test
@@ -63,7 +66,8 @@ public class SortTest {
 
 	@Test
 	public void radixSort() {
-
+		RadixSort rs = new RadixSort();
+		rs.execute();
 	}
 
 	@Test

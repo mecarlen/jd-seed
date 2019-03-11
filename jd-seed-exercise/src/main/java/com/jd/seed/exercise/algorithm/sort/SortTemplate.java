@@ -11,7 +11,7 @@ import java.util.Random;
  */
 public abstract class SortTemplate {
 	protected int[] nums;
-	protected int numCount = 11;
+	protected int numCount = 10;
 
 	private void init() {
 		// 随机准备数据
