@@ -8,6 +8,7 @@ import com.jd.seed.exercise.algorithm.sort.insertion.StraightInsertionSort;
 import com.jd.seed.exercise.algorithm.sort.quick.QuickSort;
 import com.jd.seed.exercise.algorithm.sort.selection.SimpleSelectionSort;
 import com.jd.seed.exercise.algorithm.sort.selection.TwoElementsSelectionSort;
+import com.jd.seed.exercise.algorithm.sort.shell.ShellSort;
 
 /**
  * <pre>
@@ -67,6 +68,7 @@ public class SortTest {
 
 	@Test
 	public void shellSort() {
-
+		ShellSort ss = new ShellSort();
+		ss.execute();
 	}
 }

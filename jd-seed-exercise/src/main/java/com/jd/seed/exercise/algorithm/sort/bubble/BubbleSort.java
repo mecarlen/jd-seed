@@ -28,25 +28,6 @@ public class BubbleSort extends SortTemplate {
 		}
 	}
 
-	/**
-	 * <pre>
-	 * 排序内打印
-	 * 
-	 * </pre>
-	 */
-	void print(int times) {
-		System.out.print("当前第 " + times + " 轮:  ");
-		for (int index = 0; index < numCount; index++) {
-			if (index == 0)
-				System.out.print("[" + nums[index]);
-			else if (index == (numCount - 1))
-				System.out.print("," + nums[index] + "]");
-			else
-				System.out.print("," + nums[index]);
-		}
-		System.out.println();
-	}
-
 	void print(int firstlevel, int secondlevel) {
 		System.out.print("  第 " + firstlevel + "-" + secondlevel + " 轮:  ");
 		for (int index = 0; index < numCount; index++) {

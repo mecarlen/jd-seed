@@ -38,6 +38,26 @@ public abstract class SortTemplate {
 	}
 
 	public abstract void sort(int[] nums);
+	
+	/**
+	 * <pre>
+	 * 排序内打印
+	 * 
+	 * </pre>
+	 * @param times int 轮次
+	 */
+	protected void print(int times) {
+		System.out.print("当前第 " + times + " 轮:  ");
+		for (int index = 0; index < numCount; index++) {
+			if (index == 0)
+				System.out.print("[" + nums[index]);
+			else if (index == (numCount - 1))
+				System.out.print("," + nums[index] + "]");
+			else
+				System.out.print("," + nums[index]);
+		}
+		System.out.println();
+	}
 
 	private void print() {
 		System.out.print("结束：");

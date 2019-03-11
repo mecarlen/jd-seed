@@ -31,23 +31,4 @@ public class StraightInsertionSort extends SortTemplate {
 			print(firstlevel);
 		}
 	}
-
-	/**
-	 * <pre>
-	 * 排序内打印
-	 * 
-	 * </pre>
-	 */
-	void print(int times) {
-		System.out.print("当前第 " + times + " 轮:  ");
-		for (int index = 0; index < numCount; index++) {
-			if (index == 0)
-				System.out.print("[" + nums[index]);
-			else if (index == (numCount - 1))
-				System.out.print("," + nums[index] + "]");
-			else
-				System.out.print("," + nums[index]);
-		}
-		System.out.println();
-	}
 }
