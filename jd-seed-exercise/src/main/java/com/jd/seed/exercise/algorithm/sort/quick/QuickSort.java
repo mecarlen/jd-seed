@@ -61,7 +61,7 @@ public class QuickSort extends SortTemplate {
 	 *            int 执行轮数
 	 * @return int
 	 */
-	int partion(int[] nums, int low, int high, int times) {
+	private int partion(int[] nums, int low, int high, int times) {
 		// 初始分二坐标为最低坐标值
 		int partionVal = nums[low];
 		while (low < high) {
@@ -95,7 +95,7 @@ public class QuickSort extends SortTemplate {
 	 * @param targetIdx
 	 *            int 目标位下标
 	 */
-	void swap(int[] nums, int sourceIdx, int targetIdx) {
+	private void swap(int[] nums, int sourceIdx, int targetIdx) {
 		int tmp = nums[sourceIdx];
 		nums[sourceIdx] = nums[targetIdx];
 		nums[targetIdx] = tmp;

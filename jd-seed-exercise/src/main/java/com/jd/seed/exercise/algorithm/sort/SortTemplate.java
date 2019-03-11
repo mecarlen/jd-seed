@@ -11,7 +11,7 @@ import java.util.Random;
  */
 public abstract class SortTemplate {
 	protected int[] nums;
-	protected int numCount = 10;
+	protected int numCount = 21;
 
 	private void init() {
 		// 随机准备数据
@@ -70,5 +70,10 @@ public abstract class SortTemplate {
 			else
 				System.out.print("," + nums[index]);
 		}
+	}
+	
+	public int[] getSortedArray() {
+		execute();
+		return nums;
 	}
 }
