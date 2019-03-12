@@ -93,11 +93,16 @@
 			</exclusions>
 		</dependency>
 		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<!-- 二维码API库 -->
+		<dependency>
 		    <groupId>com.google.zxing</groupId>
 		    <artifactId>core</artifactId>
 		    <version>3.2.1</version>
 		</dependency>
-		<!-- 二维码API库 -->
 		<dependency>
 		  <groupId>com.google.zxing</groupId>
 		  <artifactId>javase</artifactId>

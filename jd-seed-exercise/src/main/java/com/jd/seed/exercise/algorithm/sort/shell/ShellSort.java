@@ -4,7 +4,7 @@ import com.jd.seed.exercise.algorithm.sort.SortTemplate;
 
 /**
  * <pre>
- * 
+ * 希尔排序
  * 
  * </pre>
  * 

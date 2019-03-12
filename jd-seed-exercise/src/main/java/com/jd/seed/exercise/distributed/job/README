@@ -1,0 +1,3 @@
+分布式任务调度
+1、quartz + zookeeper实现方案
+2、ScheduledExecutorService + zookeeper实现方案

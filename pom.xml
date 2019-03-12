@@ -197,6 +197,11 @@
 				<artifactId>commons-collections4</artifactId>
 				<version>4.2</version>
 			</dependency>
+			<dependency>
+				<groupId>org.apache.curator</groupId>
+				<artifactId>curator-recipes</artifactId>
+				<version>4.0.1</version>
+			</dependency>
 			<!--log4j2 异步依赖-->
 			<dependency>
 			   <groupId>com.lmax</groupId>
