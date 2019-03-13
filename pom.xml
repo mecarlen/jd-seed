@@ -173,11 +173,6 @@
 				<version>1.1.10</version>
 			</dependency>
 			<dependency>
-				<groupId>org.apache.commons</groupId>
-				<artifactId>commons-collections4</artifactId>
-				<version>4.1</version>
-			</dependency>
-			<dependency>
 				<groupId>org.yaml</groupId>
 				<artifactId>snakeyaml</artifactId>
 				<version>1.9</version>
@@ -186,11 +181,6 @@
 				<groupId>org.aspectj</groupId>
 				<artifactId>aspectjrt</artifactId>
 				<version>1.8.12</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.commons</groupId>
-				<artifactId>commons-collections4</artifactId>
-				<version>4.2</version>
 			</dependency>
 			<dependency>
 				<groupId>com.google.guava</groupId>
@@ -206,6 +196,11 @@
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-collections4</artifactId>
 				<version>4.2</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.curator</groupId>
+				<artifactId>curator-recipes</artifactId>
+				<version>4.0.1</version>
 			</dependency>
 			<!--log4j2 异步依赖-->
 			<dependency>
