@@ -27,5 +27,9 @@ public class SearchTest {
 		Assert.isTrue(tgIdx > 0 && target == nums[tgIdx], "查找失败");
 	}
 	
+	@Test
+	public void bitOpt() {
+		System.out.println(10 << 1);
+	}
 	
 }
