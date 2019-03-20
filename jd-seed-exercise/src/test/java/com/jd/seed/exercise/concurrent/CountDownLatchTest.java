@@ -49,7 +49,7 @@ public class CountDownLatchTest {
 		ExecutorService conferenceExecutor = Executors.newCachedThreadPool();
 		conferenceExecutor.execute(videoConference);
 		// 入会人初始化
-		ExecutorService participantExecutor = Executors.newFixedThreadPool(3);
+		ExecutorService participantExecutor = Executors.newFixedThreadPool(4);
 		for (int i = 1; i <= conferenceMembers; i++) {
 			String name = "第【"+i+"】位入会人";
 			participantExecutor.execute(new ParticipantThread(videoConference, name));

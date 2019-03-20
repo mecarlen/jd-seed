@@ -11,7 +11,7 @@ import java.util.concurrent.CyclicBarrier;
  * 
  * @author mecarlen 2019年3月19日 上午10:50:31
  */
-public class CycliclBarrierThread extends Thread {
+public class CycliclBarrierThread implements Runnable {
 	//集结器
 	private CyclicBarrier barrier;
 	private String name;

@@ -10,7 +10,7 @@ import java.util.concurrent.CountDownLatch;
  * 
  * @author mecarlen 2019年3月19日 上午10:24:35
  */
-public class ContainCountDownLatchSimpleThread extends Thread {
+public class ContainCountDownLatchSimpleThread implements Runnable {
 	// 计算器
 	private CountDownLatch latch;
 	private String name;
