@@ -22,4 +22,10 @@ public class ListTest {
 		Assertions.assertThat(ll.getFirst()).isEqualTo("jecarlen").describedAs("头部元素不是期望值");
 		Assertions.assertThat(ll.getLast()).isEqualTo("jhon").describedAs("尾部元素不是期望值");
 	}
+	@Test
+	public void intOpt() {
+		int i=0;
+		i = i++;
+		System.out.println("--->"+i);
+	}
 }
