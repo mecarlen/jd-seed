@@ -11,13 +11,16 @@ import java.util.Random;
  */
 public abstract class SortTemplate {
 	protected int[] nums;
-	protected int numCount = 21;
+	protected int numCount = 11;
+	public SortTemplate() {
+		init();
+	}
 
 	private void init() {
 		// 随机准备数据
 		Random rd = new Random();
 		nums = new int[numCount];
-		System.out.println("============"+this.getClass().getSimpleName()+"=============");
+		System.out.println("============" + this.getClass().getSimpleName() + "=============");
 		System.out.print("初始：");
 		for (int index = 0; index < numCount; index++) {
 			nums[index] = rd.nextInt(100);
@@ -32,19 +35,21 @@ public abstract class SortTemplate {
 	}
 
 	public void execute() {
-		init();
+		// init();
 		sort(this.nums);
 		print();
 	}
 
 	public abstract void sort(int[] nums);
-	
+
 	/**
 	 * <pre>
 	 * 排序内打印
 	 * 
 	 * </pre>
-	 * @param times int 轮次
+	 * 
+	 * @param times
+	 *            int 轮次
 	 */
 	protected void print(int times) {
 		System.out.print("当前第 " + times + " 轮:  ");
@@ -71,7 +76,11 @@ public abstract class SortTemplate {
 				System.out.print("," + nums[index]);
 		}
 	}
-	
+
+	public int[] getNums() {
+		return nums;
+	}
+
 	public int[] getSortedArray() {
 		execute();
 		return nums;
