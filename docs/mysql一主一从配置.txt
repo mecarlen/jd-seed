@@ -22,9 +22,9 @@
 	#设置3358端口
 	port = 3358
 	# 设置mysql的安装目录
-	basedir=D:\develop\MySQL\MySQL 5.7.20
+	basedir=D:/develop/MySQL/MySQL 5.7.20
 	# 设置mysql数据库的数据的存放目录
-	datadir=D:\develop\MySQL\MySQL 5.7.20\data
+	datadir=D:/develop/MySQL/MySQL 5.7.20/data
  3.2、从配置 port:3359，5.7特点从库my.ini不允许配置master信息
 	[client]
 	port = 3359
@@ -35,8 +35,8 @@
 	#bind-address=0.0.0.0
 	server_id = 2
 	#binlog_format = ROW
-	#log-bin = D:\develop\MySQL\MySQL 5.7.20_slave\log\mysql-bin
-	#log-bin-index = D:\develop\MySQL\MySQL 5.7.20_slave\log\mysql-bin.index
+	#log-bin = D:/develop/MySQL/MySQL 5.7.20_slave/log/mysql-bin
+	#log-bin-index = D:/develop/MySQL/MySQL 5.7.20_slave/log/mysql-bin.index
 	#主库IP
 	#master-host=localhost
 	#master-user = repli
@@ -47,24 +47,24 @@
 	#设置3358端口
 	port = 3359
 	# 设置mysql的安装目录
-	basedir=D:\develop\MySQL\MySQL 5.7.20_slave
+	basedir=D:/develop/MySQL/MySQL 5.7.20_slave
 	# 设置mysql数据库的数据的存放目录
-	datadir=D:\develop\MySQL\MySQL 5.7.20_slave\data
+	datadir=D:/develop/MySQL/MySQL 5.7.20_slave/data
 4、安装
  4.1、主安装
 	进入主库bin目录下执行如下命令
 	初始化库root密码为空
-	mysqld --initialize-insecure --basedir="D:\develop\MySQL\MySQL 5.7.20" --datadir="D:\develop\MySQL\MySQL 5.7.20\data" --console
+	mysqld --initialize-insecure --basedir="D:/develop/MySQL/MySQL 5.7.20" --datadir="D:/develop/MySQL/MySQL 5.7.20/data" --console
 	指定数据库初始化配置，服务名为MySQL
-	mysqld install MySQL --defaults-file="D:\develop\MySQL\MySQL 5.7.20\my.ini"
+	mysqld install MySQL --defaults-file="D:/develop/MySQL/MySQL 5.7.20/my.ini"
 	启动服务
 	net start MySQL
 	查看主库 File,POSITION备从库配置
 	show master status
 	创建从库同步用户并授权
-	create user 'repli'@'%' identified by 'repli'
-	grant replication slave on *.* to 'repli'@'%'
-	flush privileges
+	create user 'repli'@'%' identified by 'repli';
+	grant replication slave on *.* to 'repli'@'%';
+	flush privileges;
 	创建主库及用户-写
 	CREATE DATABASE demo DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 	create user demo identified by 'demo';
@@ -77,15 +77,15 @@
 	
  4.2、从安装
 	进入从库bin目录下执行如下命令
-	mysqld --initialize-insecure --basedir="D:\develop\MySQL\MySQL 5.7.20_slave" --datadir="D:\develop\MySQL\MySQL 5.7.20_slave\data" --console
-	mysqld install MySQL-Slave --defaults-file="D:\develop\MySQL\MySQL 5.7.20_slave\my.ini"
+	mysqld --initialize-insecure --basedir="D:/develop/MySQL/MySQL 5.7.20_slave" --datadir="D:/develop/MySQL/MySQL 5.7.20_slave/data" --console
+	mysqld install MySQL-Slave --defaults-file="D:/develop/MySQL/MySQL 5.7.20_slave/my.ini"
 	net start MySQL-Slave
 	show slave status
 	首次配置master只需执行 
-	change master to master_host='127.0.0.1',master_port='3358',master_user='repli',master_password='repli',master_log_file='bin-log.00001',master_log_pos='750';
+	change master to master_host='127.0.0.1',master_port=3358,master_user='repli',master_password='repli',master_log_file='bin-log.00001',master_log_pos=0;
 	再次修改master需要执行如下几行
 	stop slave
-	change master to master_host='127.0.0.1',master_port='3358',master_user='repli',master_password='repli',master_log_file='bin-log.00001',master_log_pos='750';
+	change master to master_host='127.0.0.1',master_port=3358,master_user='repli',master_password='repli',master_log_file='bin-log.00001',master_log_pos='750';
 	start slave
 	创建从库-读
 	CREATE DATABASE demo DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
