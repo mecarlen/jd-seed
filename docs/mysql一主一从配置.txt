@@ -90,7 +90,7 @@
 	创建从库-读
 	CREATE DATABASE demo DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 	create user demo_r identified by 'demo';
-	grant select on demo.* to 'demo'@'%';
+	grant select on demo.* to 'demo_r'@'%';
 	flush PRIVILEGES;
 	修改my.ini配置
 	replicate-do-db=需要复制的数据库名，如果复制多个数据库，重复设置这个选项即可,如：demo
