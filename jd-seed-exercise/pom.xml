@@ -10,6 +10,9 @@
   <name>seed exercise</name>
   <description>seed exercise</description>
   <dependencies>
-  
+  	<dependency>
+		<groupId>com.jd.seed</groupId>
+		<artifactId>jd-seed-util</artifactId>
+	</dependency>
   </dependencies>
 </project>

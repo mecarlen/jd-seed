@@ -6,3 +6,8 @@
   CacheThreadExecutor
   ScheduledThreadExecutor
 3.Fork/Join多核编程
+例1：带返回值的并发
+  1)用FixedThreadExecutor固定创建30个线程
+  2)实现Callable并返回自定类型Result
+  3)并发计数器CountDownLatch实现并行
+  4)并结束还回List<Result>
